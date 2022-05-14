@@ -1,0 +1,153 @@
+body {
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  color: #9c978c;
+}
+
+/* Form styles */
+.form-signin {
+  width: 100%;
+  max-width: 500px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: 5%;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 5%;
+}
+
+.form-signin input[type="text"] {
+  margin-bottom: 5%;
+}
+
+.form-signin a:link {
+  text-decoration: underline 0.15em rgba(255, 255, 255, 0);
+  transition: text-decoration-color 300ms;
+}
+
+.form-signin a:hover {
+  color: #ffc107;
+  text-decoration-color: #ffc107;
+}
+
+.form-signin button {
+  border-radius: 0px;
+  border-color: transparent !important;
+  background: linear-gradient(
+      91.83deg,
+      rgba(189, 146, 70, 0.7),
+      hsla(51, 89%, 93%, 0.7) 50.52%,
+      rgba(189, 146, 70, 0.7)
+    ),
+    url("https://res.cloudinary.com/hgz4udyx9/image/upload/v1636256206/media/hp-button-texture.png") !important;
+  color: black !important;
+  font-weight: 200;
+  text-transform: uppercase;
+  min-width: 150px;
+  min-height: 50px;
+  font-size: large;
+  font-weight: 400;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.form-signin button:hover {
+  background: linear-gradient(
+      91.83deg,
+      rgba(189, 146, 70, 0.7),
+      hsla(51, 89%, 93%, 0.7) 26.56%,
+      hsla(51, 89%, 93%, 0.7) 50.52%,
+      hsla(51, 89%, 93%, 0.7) 76.04%,
+      rgba(189, 146, 70, 0.7)
+    ),
+    url("https://res.cloudinary.com/hgz4udyx9/image/upload/v1636256206/media/hp-button-texture.png") !important;
+  color: black !important;
+}
+
+//Bubble animation.
+
+.bokeh-background{
+  background: transparent;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0; left: 0;
+  height: 100vh; width: 100vw;
+  z-index: -2;
+
+      &:after{
+          content: '';
+          position: absolute;
+          left: 0; right: 0;
+          top: 0; bottom: 0;
+          // background: linear-gradient(to right,  #000 0%,#06373E 53%,#000 100%);
+          background: linear-gradient(to right,  #000 0%,#191422 53%,#000 100%);
+          z-index: -1;
+      }
+}
+
+// Animate Bubbles
+$particleSize: 25vmin;
+$animationDuration: 26s;
+$amount: 20;
+
+.bokeh-background > span {
+  width: $particleSize;
+  height: $particleSize;
+
+  border-radius: $particleSize;
+  backface-visibility: hidden;
+  position: absolute;
+  animation-name: move;
+  animation-duration: $animationDuration;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  $colors: (
+    #221c2f,
+    #2a2634,
+    #221c2f
+  );
+  @for $i from 1 through $amount {
+    &:nth-child(#{$i}) {
+      
+      color: nth($colors, random(length($colors)));
+      top: random(100) * 1%;
+      left: random(100) * 1%;
+      animation-duration: (random($animationDuration * 10) / 10) * 2s + 30s;
+      animation-delay: random(($animationDuration + 20s) * 10) / 20 * -1s;
+      transform-origin: (random(50) - 25) * 1vw (random(50) - 25) * 1vh;
+      $blurRadius: (random() + 0.45) * $particleSize * 0.16;
+      $x: if(random() > 0.5, -1, 1);
+      box-shadow: ($particleSize * 2 * $x) 0 $blurRadius currentColor;
+      
+      // box-shadow: -50vmin ​0 4.43472vmin rgba(255,255,255, 0.6)
+    }
+  }
+}
+
+@keyframes move {
+  10%{
+    transform: translate3d(0, 0, 1px) rotate(0) scale(.25);
+  }
+  100% {
+    transform: translate3d(0, 0, 1px) rotate(360deg) scale(1.5);
+  }
+}
