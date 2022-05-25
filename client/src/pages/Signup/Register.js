@@ -1,35 +1,33 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
+import { RegisterContext } from "../../context/RegisterContext";
 import axios from "axios";
 import MainFooter from "../../components/footers/MainFooter";
 import SecondaryFooter from "../../components/footers/SecondaryFooter";
 
 const Register = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { userInfo, setUserInfo } = useContext(RegisterContext);
   const [redirect, setRedirect] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    await axios.post(
-      "http://localhost:3000/users/signup",
-      {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
-      },
-      { headers: { "Content-Type": "application/json" } }
-    );
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/users/email", {email: userInfo.email}, { headers: { "Content-Type": "application/json" } }
+      );
+      
+      if(response.data.message === "The email is valid" && response.status === 200) {
+        setRedirect(true);
+      }
 
-    setRedirect(true);
+    } catch {
+      alert("This email already exists")
+    }
   };
 
   if (redirect) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/profile" />;
   }
 
   return (
@@ -45,7 +43,7 @@ const Register = () => {
               className="form-control"
               placeholder="Harry"
               required
-              onChange={(e) => setFirstName(e.target.value)}
+              onChange={(e) => setUserInfo({ ...userInfo, firstName: e.target.value})}
             />
           </div>
           <div className="col-6">
@@ -55,7 +53,7 @@ const Register = () => {
               className="form-control"
               placeholder="Potter"
               required
-              onChange={(e) => setLastName(e.target.value)}
+              onChange={(e) => setUserInfo({ ...userInfo, lastName: e.target.value})}
             />
           </div>
         </div>
@@ -67,7 +65,7 @@ const Register = () => {
           placeholder="example@mail.com"
           required
           autofocus
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value})}
         />
         <label>Password</label>
         <input
@@ -76,9 +74,9 @@ const Register = () => {
           className="form-control"
           placeholder="password"
           required
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setUserInfo({ ...userInfo, password: e.target.value})}
         />
-        <button className="btn btn-lg btn-primary btn-block" type="submit">
+        <button className="golden-button" type="submit">
           Register
         </button>
         <p></p>

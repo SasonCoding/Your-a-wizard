@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
-import MainFooter from "../../components/footers/MainFooter"
-import SecondaryFooter from "../../components/footers/SecondaryFooter"
+import MainFooter from "../../components/footers/MainFooter";
+import SecondaryFooter from "../../components/footers/SecondaryFooter";
 import "./signup.css";
 
 const Login = () => {
@@ -66,7 +66,7 @@ const Login = () => {
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">
+        <button type="submit" className="golden-button">
           Log in
         </button>
         <p></p>
@@ -74,20 +74,7 @@ const Login = () => {
       </form>
       <br></br>
       <MainFooter />
-      <div className="bokeh-background">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+      <SecondaryFooter />
     </div>
   );
 };

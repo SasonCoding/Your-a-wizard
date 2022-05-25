@@ -4,10 +4,10 @@ const morgan = require('morgan'); //Sets a log every time we get an http request
 const mongoose = require('mongoose');
 const cookieParser = require("cookie-parser");
 require('dotenv').config();
-const bodyParser = require("body-parser");
 const articlesRoutes = require("./api/routes/articles");//Importing the articles routes that was exported.
 const categoriesRoutes = require("./api/routes/categories");
-const UsersRoutes = require("./api/routes/users");
+const usersRoutes = require("./api/routes/users");
+const wizardlyRoutes = require("./api/routes/wizardlyInfo");
 
 const app = express();
 app.use(express.json());
@@ -29,10 +29,11 @@ app.use(cors({
 }));
 
 //Routes
-app.use('/articles', articlesRoutes);//This structure allows us to create diffrent routes in other files and import them to this app.js file and operate them from here.
+//This structure allows us to create diffrent routes in other files and import them to this app.js file and operate them from here.
+app.use('/articles', articlesRoutes);
 app.use('/categories', categoriesRoutes);
-app.use("/users", UsersRoutes);
-
+app.use("/users", usersRoutes);
+app.use("/wizardlyInfo", wizardlyRoutes);
 app.use('/uploads', express.static('uploads'));//This route enables us the option to see an image on the browser.
 
 //Handling unexpected routes/errors.

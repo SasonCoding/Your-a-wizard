@@ -1,0 +1,117 @@
+.card {
+    border: 2px solid hsla(0, 0%, 100%, 0.1);
+    -webkit-box-shadow: 0 0 25px rgba(255, 168, 37, 0.15),
+      0 0 3px rgba(255, 251, 37, 0.2), 0 0 6px hsla(46, 98%, 77%, 0.1),
+      0 0 20px hsla(0, 0%, 100%, 0.2);
+    box-shadow: 0 0 25px rgba(255, 168, 37, 0.15), 0 0 3px rgba(255, 251, 37, 0.2),
+      0 0 6px hsla(46, 98%, 77%, 0.1), 0 0 20px hsla(0, 0%, 100%, 0.2);
+    min-height: 160px;
+  }
+  
+  .card.magic-card,
+  .card.magic-card figure a {
+    position: relative;
+  }
+  .card.magic-card figure a:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      from(#000),
+      color-stop(29.1%, transparent)
+    );
+    background: -o-linear-gradient(bottom, #000, transparent 29.1%);
+    background: linear-gradient(0deg, #000, transparent 29.1%);
+  }
+  .card.magic-card .fp-background {
+    position: absolute;
+    top: -20px;
+    bottom: -20px;
+    left: -100px;
+    right: 100%;
+    width: 100px;
+    z-index: -1;
+  }
+  .card.magic-card .card-body {
+    position: relative;
+    z-index: 0;
+  }
+  .card a[href^="tel:"] svg.icon-phone {
+    width: 22px;
+    height: 22px;
+    fill: #0b0a03;
+  }
+  @media (min-width: 576px) {
+    .card a[href^="tel:"],
+    .card a[href^="tel:"]:active,
+    .card a[href^="tel:"]:focus,
+    .card a[href^="tel:"]:hover {
+      color: #e7d681;
+      background: 0 0;
+      font-family: optimus-princeps, sans-serif;
+    }
+    .card a[href^="tel:"] svg.icon-phone {
+      fill: #e7d681;
+    }
+  }
+  .magic-card .glow {
+    position: absolute;
+    top: -50px;
+    bottom: -50px;
+    left: -50px;
+    right: -50px;
+    z-index: -1;
+    background: -o-radial-gradient(
+      50% 50%,
+      50% 50%,
+      rgba(152, 96, 129, 0.8) 0,
+      rgba(164, 110, 142, 0.536) 53.65%,
+      rgba(172, 151, 185, 0) 100%
+    );
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      rgba(152, 96, 129, 0.8) 0,
+      rgba(164, 110, 142, 0.536) 53.65%,
+      rgba(172, 151, 185, 0) 100%
+    );
+  }
+  
+  .cast-creative .cast-card .particles-canvas,
+  .cast-creative .creative-card .particles-canvas {
+    opacity: 0;
+  }
+  
+  .particles-canvas {
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      bottom: -20px;
+      right: -20px;
+      z-index: 1;
+    }
+    .discover .particles-canvas {
+      width: 300px;
+      height: 100%;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+    }
+  
+  .cast-creative .cast-card.active .particles-canvas,
+  .cast-creative .cast-card:active .particles-canvas,
+  .cast-creative .cast-card:focus .particles-canvas,
+  .cast-creative .cast-card:hover .particles-canvas,
+  .cast-creative .creative-card.active .particles-canvas,
+  .cast-creative .creative-card:active .particles-canvas,
+  .cast-creative .creative-card:focus .particles-canvas,
+  .cast-creative .creative-card:hover .particles-canvas {
+    opacity: 1;
+  }
+  

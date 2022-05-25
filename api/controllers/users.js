@@ -1,49 +1,60 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const User = require("../models/user");
+const User = require("../models/users");
 const BlackList = require("../models/blackList");
+const Profile = require("../models/profile");
 
 module.exports = {
+    
     signup: (req, res) => {
-        const { firstName, lastName, email, password } = req.body;
-
-        User.find({ email }).then((Users) => {
-            if(Users.length >= 1) {
-                return res.status(409).json({
-                    message: "This email is already in the database"
+        const { firstName, lastName, wizardlyName, dateOfBirth, region, favoriteSpell, house, email, password } = req.body;
+        
+        bcrypt.hash(password, 10, (error, hash) => { //password-who will be hased, 10-amount of hash`s, (error, hash)-callback function with the given hashed password and an error.
+            if(error) {
+                return res.status(500).json({
+                    error
                 });
             }
 
-            bcrypt.hash(password, 10, (error, hash) => { //password-who will be hased, 10-amount of hash`s, (error, hash)-callback function with the given hashed password and an error.
-                if(error) {
-                    return res.status(500).json({
-                        error
-                    });
-                }
+            const profile = new Profile({
+                wizardlyName: wizardlyName,
+                dateOfBirth: dateOfBirth,
+                region: region,
+                favoriteSpell: favoriteSpell,
+                house: house
+            });
 
+            profile.save().then((savedProfile) => {
                 const user = new User({
                     firstName: firstName,
                     lastName: lastName,
                     email: email,
-                    password: hash //Passing the hashed value as the password to the user model.
+                    password: hash, //Passing the hashed value as the password to the user model.
+                    profileId: savedProfile.id
                 })
-
-                user.save().then(() => {
-                    res.status(200).json({
+    
+                return user.save().then(() => {
+                    return res.status(200).json({
                         message: `User ${email} was saved succesfully`
                     });
                 }).catch((error) => {
-                    res.status(500).json({
-                        message: "Server couldent save the user",
-                        error
-                    });
+                    if(error.code == 11000) {
+                        return res.status(409).json({
+                            message: "This email already exsits in the database"
+                        })
+                    } else {
+                        return res.status(500).json({
+                            message: "Server couldent save the user",
+                            error
+                        });
+                    }
+                })
+            }).catch((error) => {
+                res.status(404).json({
+                    error,
+                    message: "Maby you havent filled one of the required fields"
                 })
             })
-
-        }).catch((error) => {
-            res.status(500).json({
-                error
-            });
         })
     },
 
@@ -117,12 +128,30 @@ module.exports = {
         User.findById(userId).then((foundUser) => {
             const { name: userName } = foundUser
             res.status(200).json({
-                userName
+                foundUser
             })
         }).catch((error) => {
             res.status(401).json({
                 error
             })
+        })
+    },
+
+    checkEmail: (req, res) => {
+        const { email } = req.body;
+        User.find({ email }).then((users) => {
+            if(users.length >= 1) {
+                return res.status(409).json({
+                    message: "This email already exsits in the database"
+                });
+            }
+            res.status(200).json({
+                message: "The email is valid",
+            });
+        }).catch((error) => {
+            res.status(500).json({
+                error
+            });
         })
     }
 }

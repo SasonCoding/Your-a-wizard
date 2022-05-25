@@ -77,7 +77,7 @@ module.exports = {
             categoryId: categoryId,
             image: image
           });
-
+          
           return article.save().then((returnedArticle) => {
             if (returnedArticle === article) {
               //Checking if the save method worked.

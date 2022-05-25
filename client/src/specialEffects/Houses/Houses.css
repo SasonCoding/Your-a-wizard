@@ -1,0 +1,127 @@
+.house {
+  display: block;
+  position: relative;
+  height: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  color: #fcf5e7;
+  min-height: 450px;
+}
+
+.house .house__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.house .house__background.loaded.gryffindor {
+  background-image: url("https://cdn.shopify.com/s/files/1/0514/6332/3817/t/5/assets/gryffindor-card.png");
+  opacity: 1;
+}
+
+.house .house__background.loaded.ravenclaw {
+  background-image: url("https://cdn.shopify.com/s/files/1/0514/6332/3817/t/5/assets/ravenclaw-card.png");
+  opacity: 1;
+}
+
+.house:hover .house__background.loaded.ravenclaw,
+.house.active .house__background.loaded.ravenclaw,
+.houses.on .house .house__background.loaded.ravenclaw {
+  opacity: 1;
+}
+
+.house .house__background.loaded.hufflepuff {
+  background-image: url("https://cdn.shopify.com/s/files/1/0514/6332/3817/t/5/assets/hufflepuff-card.png");
+  opacity: 1;
+}
+
+.house:hover .house__background.loaded.hufflepuff,
+.house.active .house__background.loaded.hufflepuff,
+.houses.on .house .house__background.loaded.hufflepuff {
+  opacity: 1;
+}
+
+.house .house__background.loaded.slytherin {
+  background-image: url("https://cdn.shopify.com/s/files/1/0514/6332/3817/t/5/assets/slytherin-card.png");
+  opacity: 1;
+}
+
+.house:hover .house__background.loaded.slytherin,
+.house.active .house__background.loaded.slytherin,
+.houses.on .house .house__background.loaded.slytherin {
+  opacity: 1;
+}
+
+.house .house__gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.85)));
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
+}
+
+.house .house__border {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 10px;
+  border: 2px solid #fcf5e7;
+}
+
+.house .house__crest {
+  position: absolute;
+  right: 14px;
+  bottom: 100px;
+  max-height: 265px;
+  max-width: 90.69767%;
+  margin: 0 auto;
+}
+
+.house .house__title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 30px;
+}
+
+.house .house__background.standard {
+  opacity: 1;
+}
+
+.house:hover .house__gradient {
+  opacity: 0.5;
+}
+
+.lazy-bg {
+  opacity: 0;
+  -webkit-transition: opacity 400ms;
+  transition: opacity 400ms;
+}
+
+.lazy-bg.loaded {
+  opacity: 1;
+}
+
+.lazy-loading {
+  -webkit-transform: translateY(40px);
+          transform: translateY(40px);
+  opacity: 0;
+  -webkit-transition: all 400ms;
+  transition: all 400ms;
+}
+
+.lazy-loading.loaded {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  opacity: 1;
+}
+/*# sourceMappingURL=Houses.css.map */
