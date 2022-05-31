@@ -1,34 +1,32 @@
-import React, { useContext, useState } from "react";
-import { Navigate } from "react-router-dom";
-import { RegisterContext } from "../../context/RegisterContext";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useRegister } from "../../context/RegisterContext";
 import axios from "axios";
 import MainFooter from "../../components/footers/MainFooter";
-import SecondaryFooter from "../../components/footers/SecondaryFooter";
+import BubbleEffect from "../../specialEffects/Bubbles/BubbleEffect"
 
 const Register = () => {
-  const { userInfo, setUserInfo } = useContext(RegisterContext);
-  const [redirect, setRedirect] = useState(false);
+  const { userInfo, setUserInfo, setFinishedRegister } = useRegister();
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await axios.post(
+      const response = await axios.post(//Checking if the email is valid before redirecting the user.
         "http://localhost:3000/users/email", {email: userInfo.email}, { headers: { "Content-Type": "application/json" } }
       );
       
       if(response.data.message === "The email is valid" && response.status === 200) {
-        setRedirect(true);
+        setFinishedRegister(true);
+        navigate('/profile');
       }
 
-    } catch {
-      alert("This email already exists")
+    } catch(error) {
+      alert("This email already exists");
+      console.log(error);
     }
   };
-
-  if (redirect) {
-    return <Navigate to="/profile" />;
-  }
 
   return (
     <div>
@@ -64,7 +62,7 @@ const Register = () => {
           className="form-control"
           placeholder="example@mail.com"
           required
-          autofocus
+          autoFocus
           onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value})}
         />
         <label>Password</label>
@@ -82,6 +80,7 @@ const Register = () => {
         <p></p>
         <a href="/login">Already have an account?</a>
       </form>
+      <BubbleEffect />
       <MainFooter />
     </div>
   );

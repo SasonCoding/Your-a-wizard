@@ -1,15 +1,3 @@
-body {
-  color: white;
-}
-
-ul {
-  list-style-type: none;
-}
-
-a {
-  color: #9c978c;
-}
-
 /* Form styles */
 .form-signin {
   width: 100%;

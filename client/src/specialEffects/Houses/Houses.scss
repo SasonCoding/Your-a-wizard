@@ -72,10 +72,10 @@
 }
 .house .house__crest {
   position: absolute;
-  right: 14px;
+  right: 10px;
   bottom: 100px;
-  max-height: 265px;
-  max-width: 90.69767%;
+  max-height: 65%;
+  max-width: 100%;
   margin: 0 auto;
 }
 .house .house__title {
@@ -90,22 +90,4 @@
 
 .house:hover .house__gradient{
   opacity: 0.5;
-}
-
-.lazy-bg {
-  opacity: 0;
-  transition: opacity 400ms;
-}
-.lazy-bg.loaded {
-  opacity: 1;
-}
-
-.lazy-loading {
-  transform: translateY(40px);
-  opacity: 0;
-  transition: all 400ms;
-}
-.lazy-loading.loaded {
-  transform: translateY(0);
-  opacity: 1;
 }

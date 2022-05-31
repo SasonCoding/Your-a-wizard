@@ -33,7 +33,7 @@ const Article = () => {
           className="form-control"
           placeholder="Title"
           required
-          autofocus
+          autoFocus
           onChange={e => setTitle(e.target.value)}
         />
         <input

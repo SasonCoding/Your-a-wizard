@@ -1,1 +1,33 @@
-/* No CSS *//*# sourceMappingURL=Particles.css.map */
+.particles-canvas {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  bottom: -20px;
+  right: -20px;
+  z-index: -1;
+}
+
+.discover .particles-canvas {
+  width: 300px;
+  height: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.cast-creative .cast-card .particles-canvas,
+.cast-creative .creative-card .particles-canvas {
+  opacity: 0;
+}
+
+.cast-creative .cast-card.active .particles-canvas,
+.cast-creative .cast-card:active .particles-canvas,
+.cast-creative .cast-card:focus .particles-canvas,
+.cast-creative .cast-card:hover .particles-canvas,
+.cast-creative .creative-card.active .particles-canvas,
+.cast-creative .creative-card:active .particles-canvas,
+.cast-creative .creative-card:focus .particles-canvas,
+.cast-creative .creative-card:hover .particles-canvas {
+  opacity: 1;
+}
+/*# sourceMappingURL=Particles.css.map */

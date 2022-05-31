@@ -1,14 +1,16 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useRegister } from "../../context/RegisterContext";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
 import MainFooter from "../../components/footers/MainFooter";
-import SecondaryFooter from "../../components/footers/SecondaryFooter";
+import BubbleEffect from "../../specialEffects/Bubbles/BubbleEffect";
 import "./signup.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [redirect, setRedirect] = useState(false);
+  const { setLoggedIn } = useRegister();
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,26 +27,22 @@ const Login = () => {
         }
       );
 
-      if (response) {
+      if (response.status === 200) {
         console.log("Succesfully logged in");
-        console.log(response);
+        setLoggedIn(true);
+        navigate('/');
       } else {
         console.log("No cookie was recived from the server.");
         return;
       }
 
-      setRedirect(true);
     } catch (error) {
       console.log(error.response.data);
     }
   };
 
-  if (redirect) {
-    return <Navigate to="/" />;
-  }
-
   return (
-    <div className="login-page">
+    <div className="container-fluid">
       <form className="form-signin pt-5" onSubmit={handleSubmit} style={{marginBottom: "20px"}}>
         <h1 className="h3 mb-4 font-weight-normal">Sign into your account</h1>
         <label>Email address</label>
@@ -54,7 +52,7 @@ const Login = () => {
           className="form-control"
           placeholder="example@mail.com"
           required
-          autofocus
+          autoFocus
           onChange={(e) => setEmail(e.target.value)}
         />
         <label>Password</label>
@@ -73,8 +71,8 @@ const Login = () => {
         <a href="/forgotPassword">Forgot your password?</a>
       </form>
       <br></br>
+      <BubbleEffect />
       <MainFooter />
-      <SecondaryFooter />
     </div>
   );
 };

@@ -3,10 +3,9 @@ import "./footers.css";
 
 const MainFooter = () => {
   return (
-    <div>
       <footer className="main-footer">
-        <div className="row mx-5">
-          <div className="col-4 px-5">
+        <div className="row px-5 m-0">
+          <div className="col-lg-4 col-md-4 col-sm-12">
             <ul>
               <h5>INFORMATION</h5>
               <li>
@@ -20,7 +19,7 @@ const MainFooter = () => {
               </li>
             </ul>
           </div>
-          <div className="col-4">
+          <div className="col-lg-4 col-md-4 col-sm-12">
             <ul>
               <h5>CONTACT US</h5>
               <li>
@@ -28,7 +27,7 @@ const MainFooter = () => {
               </li>
             </ul>
           </div>
-          <div className="col-4">
+          <div className="col-lg-4 col-md-4 col-sm-12">
             <ul>
               <h5>QUICK LINKS</h5>
               <li>
@@ -38,7 +37,6 @@ const MainFooter = () => {
           </div>
         </div>
       </footer>
-    </div>
   );
 };
 

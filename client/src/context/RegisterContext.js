@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useContext } from "react";
 
 export const RegisterContext = createContext();
 
@@ -19,9 +19,16 @@ export const ProviderRegisterContext = (props) => {
     house: ""
   });
 
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [finishedRegister, setFinishedRegister] = useState(false);
+
   return (
-    <RegisterContext.Provider value={{ userInfo, setUserInfo, userProfile, setUserProfile }}>
+    <RegisterContext.Provider value={{ userInfo, setUserInfo, userProfile, setUserProfile, loggedIn, setLoggedIn, finishedRegister, setFinishedRegister }}>
       {props.children}
     </RegisterContext.Provider>
   );
 };
+
+export const useRegister = () => {
+  return useContext(RegisterContext);
+}

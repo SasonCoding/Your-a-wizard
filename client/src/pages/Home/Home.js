@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import Smoke from '../../specialEffects/Smoke/Smoke';
 
 const Home = () => {
   const [name, setName] = useState("");
 
   return (
     <div>
-      Home
+      <h1>Home</h1>
     </div>
   )
 }

@@ -1,9 +1,9 @@
-import React, { useContext, useEffect } from "react";
-import { RegisterContext } from "../../context/RegisterContext";
+import React, { useEffect } from "react";
+import { useRegister } from "../../context/RegisterContext";
 import "./Houses.css";
 
 const Houses = () => {
-  const { userProfile, setUserProfile } = useContext(RegisterContext);
+  const { userProfile, setUserProfile } = useRegister();
 
   const handleClick = (currentHouse) => {
     setUserProfile({...userProfile, house: currentHouse});
@@ -14,12 +14,12 @@ const Houses = () => {
   }, []);
 
   return (
-    <div className="row">
-      <div className="col-3">
+    <div className="row justify-content-center">
+      <div className="col-lg-3 col-md-6 col-sm-8">
         <span className="house" onClick={() => handleClick("Gryffindor")}>
           <div className="house__background lazy-bg standard loaded"></div>
           <div className="house__background lazy-bg gryffindor loaded"></div>
-          <div className="house__gradient"></div>
+          <div className="house__gradient" style={userProfile.house === "Gryffindor" ? {opacity: 0} : null}></div>
           <div className="house__border">
             <div className="house__crest">
               <img
@@ -35,11 +35,11 @@ const Houses = () => {
         </span>
       </div>
 
-      <div className="col-3">
+      <div className="col-lg-3 col-md-6 col-sm-8">
         <span className="house" onClick={() => handleClick("Slytherin")}>
           <div className="house__background lazy-bg standard loaded"></div>
           <div className="house__background lazy-bg slytherin loaded"></div>
-          <div className="house__gradient"></div>
+          <div className="house__gradient" style={userProfile.house === "Slytherin" ? {opacity: 0} : null}></div>
           <div className="house__border">
             <div className="house__crest">
               <img
@@ -55,11 +55,11 @@ const Houses = () => {
         </span>
       </div>
 
-      <div className="col-3">
+      <div className="col-lg-3 col-md-6 col-sm-8">
         <span className="house" onClick={() => handleClick("Ravenclaw")}>
           <div className="house__background lazy-bg standard loaded"></div>
           <div className="house__background lazy-bg ravenclaw loaded"></div>
-          <div className="house__gradient"></div>
+          <div className="house__gradient" style={userProfile.house === "Ravenclaw" ? {opacity: 0} : null}></div>
           <div className="house__border">
             <div className="house__crest">
               <img
@@ -75,11 +75,11 @@ const Houses = () => {
         </span>
       </div>
 
-      <div className="col-3">
+      <div className="col-lg-3 col-md-6 col-sm-8">
         <span className="house" onClick={() => handleClick("Hufflepuff")}>
           <div className="house__background lazy-bg standard loaded"></div>
           <div className="house__background lazy-bg hufflepuff loaded"></div>
-          <div className="house__gradient"></div>
+          <div className="house__gradient" style={userProfile.house === "Hufflepuff" ? {opacity: 0} : null}></div>
           <div className="house__border">
             <div className="house__crest">
               <img

@@ -11,7 +11,8 @@ const MagicCard = () => {
     console.log("Hello");
   };
 
-  return (
+ return ( 
+  // This component is currently not finsihed, Need to make this card a reuseable component
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-lg-11">
