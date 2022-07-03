@@ -1,0 +1,19 @@
+* {
+    transition: all 0.3s ease-out;
+  }
+
+  .card-image {
+    height: 100%;
+    width: 100%
+  }
+
+  .character-card:hover {
+    box-shadow: 0px 0px 999px 999px rgba(83, 71, 71, 0.5);
+    z-index: 500;
+  }
+
+  .card-button {
+    padding: 0;
+    border: none;
+    background: none;
+  }

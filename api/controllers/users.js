@@ -142,7 +142,7 @@ module.exports = {
         User.find({ email }).then((users) => {
             if(users.length >= 1) {
                 return res.status(409).json({
-                    message: "This email already exsits in the database"
+                    message: "This email already exists in the database"
                 });
             }
             res.status(200).json({

@@ -3,7 +3,6 @@
 .main-footer {
   clear: both;
   margin-top: 7.5%;
-  padding-bottom: 4%;
 }
 
 .main-footer h5 {
@@ -13,7 +12,7 @@
   letter-spacing: 0.05em;
 }
 
-.main-footer a:link {
+.main-footer a {
   color: white;
   text-decoration: none;
   transition: 0.2s color ease;
@@ -34,7 +33,7 @@
   font-size: small;
 }
 
-.secondary-footer a:link {
+.secondary-footer a {
   color: white;
   text-decoration: none;
   transition: 0.2s color ease;

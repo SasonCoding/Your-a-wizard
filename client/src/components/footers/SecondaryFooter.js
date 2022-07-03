@@ -3,7 +3,7 @@ import "./footers.css";
 
 const SecondaryFooter = () => {
   return (
-    <div>
+    <div className="mt-5">
       <footer className="secondary-footer">
         <div className="row mx-5 pt-2">
           <div className="col-8">

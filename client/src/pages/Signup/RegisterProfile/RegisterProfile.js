@@ -1,15 +1,15 @@
 import React from "react";
-import { useRegister } from "../../context/RegisterContext";
+import { useRegister } from "../../../context/RegisterContext";
 import axios from "axios";
-import Houses from "../../specialEffects/Houses/Houses";
+import Houses from "../../../specialEffects/Houses/Houses";
 import "./Profile.css";
 import { useNavigate } from "react-router-dom";
-import Smoke from "../../specialEffects/Smoke/Smoke";
+import Smoke from "../../../specialEffects/Smoke/Smoke";
 
-const Profile = () => {
+const RegisterProfile = () => {
   // TODO: Add an autocomplete for the WizardlyRegion input and for the Wizardly spell.
   // # The database already has data for the spells just need to add data from an api for the region and then ad the autocomplete functionality.
-  const { userProfile, setUserProfile, userInfo, setLoggedIn } = useRegister();
+  const { userProfile, setUserProfile, userInfo, setUserInfo, initUser, setLoggedIn } = useRegister();
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -17,8 +17,7 @@ const Profile = () => {
 
     try {
       const { firstName, lastName, email, password } = userInfo;
-      const { wizardlyName, birthDate, region, favoriteSpell, house } =
-        userProfile;
+      const { wizardlyName, birthDate, region, favoriteSpell, house } = userProfile;
 
       const registerResponse = await axios.post(
         "http://localhost:3000/users/signup",
@@ -36,26 +35,25 @@ const Profile = () => {
         { headers: { "Content-Type": "application/json" } }
       );
 
-      if (registerResponse.status === 200) {
-        try {
-          const loginResponse = await axios.post(
-            "http://localhost:3000/users/login",
-            {
-              email: email,
-              password: password,
-            },
-            {
-              headers: { "Content-Type": "application/json" },
-              withCredentials: "include",
-            }
-          );
-          if (loginResponse.status === 200) {
-            setLoggedIn(true);
-            navigate("/");
+      try {
+        const loginResponse = await axios.post(
+          "http://localhost:3000/users/login",
+          {
+            email: email,
+            password: password,
+          },
+          {
+            headers: { "Content-Type": "application/json" },
+            withCredentials: "include",
           }
-        } catch (error) {
-          console.log(error);
-        }
+        );
+
+        setLoggedIn(true);
+        navigate("/");
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setUserInfo(initUser);
       }
     } catch (error) {
       console.log("Something went wrong", error);
@@ -154,4 +152,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default RegisterProfile;

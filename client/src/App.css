@@ -12,3 +12,31 @@ ul {
 a {
   color: #9c978c;
 }
+
+.nav a {
+  color: #9c978c;
+  text-decoration: none;
+  transition: 0.2s color ease;
+  font-size: 140%;
+}
+
+.nav a:link {
+  -webkit-text-decoration: underline 0.15em rgba(255, 255, 255, 0);
+          text-decoration: underline 0.15em rgba(255, 255, 255, 0);
+  -webkit-transition: -webkit-text-decoration-color 300ms;
+  transition: -webkit-text-decoration-color 300ms;
+  transition: text-decoration-color 300ms;
+  transition: text-decoration-color 300ms, -webkit-text-decoration-color 300ms;
+}
+
+.nav a:focus {
+  color: #9c978c;
+}
+
+.nav a:hover {
+  color: #ffc107;
+  -webkit-text-decoration-color: #ffc107;
+          text-decoration-color: #ffc107;
+}
+
+

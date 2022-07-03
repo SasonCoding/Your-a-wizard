@@ -1,5 +1,4 @@
 import React from "react";
-import Profile from "../../pages/Profile/ProfilePage";
 import "./Smoke.css";
 
 const Smoke = () => {
@@ -13,9 +12,9 @@ const Smoke = () => {
         data-low-res="https://uk.harrypottertheplay.com/content/themes/harry-potter-parent-theme/library/videos/hpatcc_hero_9x16_1.mp4"
         data-hi-res="https://uk.harrypottertheplay.com/content/themes/harry-potter-parent-theme/library/videos/hpatcc_hero_16x9.mp4"
           loop
-          autoplay="autoplay"
+          autoPlay="autoplay"
           muted
-          playsinline
+          playsInline
           preload="auto"
         >
           <source

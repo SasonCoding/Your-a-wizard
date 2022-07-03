@@ -34,7 +34,7 @@ module.exports = {
         })
     },
 
-    createCategorie: (req, res) => {
+    createCategory: (req, res) => {
         const { title, description } = req.body;
 
         const category = new Category({
@@ -53,7 +53,7 @@ module.exports = {
         })
     },
 
-    updateCategorie: (req, res) => {
+    updateCategory: (req, res) => {
         const categoryId = req.params.categoryId;
 
         Category.updateOne({_id: categoryId}, req.body).then((foundCategory) => {
@@ -73,7 +73,7 @@ module.exports = {
         })
     },
 
-    deleteCategorie: (req, res) => {
+    deleteCategory: (req, res) => {
         const categoryId = req.params.categoryId;
 
         Category.findById(categoryId).then((category) => {

@@ -4,7 +4,7 @@ import "./footers.css";
 const MainFooter = () => {
   return (
       <footer className="main-footer">
-        <div className="row px-5 m-0">
+        <div className="row px-4 m-0">
           <div className="col-lg-4 col-md-4 col-sm-12">
             <ul>
               <h5>INFORMATION</h5>

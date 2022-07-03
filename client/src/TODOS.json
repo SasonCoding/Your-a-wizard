@@ -1,0 +1,23 @@
+{
+    "todos": {
+        "Profile Page": {
+            "Make a connection to the profile page": "DONE",
+            "Make the Profile page as a protected route": "DONE",
+            "Find a fix for the logout not redering properly": "DONE",
+            "Find a proper way to preforme the http request that checks if the user is loggedIn or not": "DONE",
+            "Make the profile page": {
+                "Create a state that declaris which background effect/color will be displayed depending on the user`s house": "",
+                "Create a `card` that will have the user details for example: name, houseName, fivSpell etc...": "",
+                "Profile picture": {
+                    "In the card that displays all the user info create a circle in the top middle with the user`s favorite actor": "",
+                    "The picutre of the favorite actor will display a diffrent picture depending on the user`s house(If Grif then a humble & courge picture etc..)" : ""
+                }
+            }
+        },
+        "App content": { 
+            "QA": "The app will have a QA ( Questions & Anwsers page that will show diffrent questions from diffrent users that use the app",
+            "": "An unsigned user will have the ability to access this page and view thw QA but if that unsigned user will want to post a question",
+            "": "or to anwser to questions he will be navigated to the register page for full registresion."
+        }
+    }
+}

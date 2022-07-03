@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const profileSchema = mongoose.Schema({
-    wizardlyName: {type: String, requried: true},
-    dateOfBirth: {type: String, requried: true},
-    region: {type: String, requried: true},
-    favoriteSpell: {type: String, requried: true},
+    wizardlyName: {type: String, required: true},
+    dateOfBirth: {type: String, required: true},
+    region: {type: String, required: true},
+    favoriteSpell: {type: String, required: true},
     house: { type: String, required: true },
 });
 

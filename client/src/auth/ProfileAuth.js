@@ -1,12 +1,10 @@
-import { Navigate } from "react-router-dom";
-import { useRegister } from "../context/RegisterContext";
+import React from "react";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { useLogin } from "../context/LoginContext";
 
-export const ProfileAuth = (props) => {
-    const { finishedRegister } = useRegister();
+export const ProfileAuth = () => {
+  const location = useLocation();
+  const { loggedIn } = useLogin();
 
-    if(!finishedRegister) {
-        return <Navigate to="/login" />
-    }
-
-    return props.children;
-}
+  return loggedIn ? <Outlet /> : <Navigate to="/login" state={{ from: location }} replace />
+};

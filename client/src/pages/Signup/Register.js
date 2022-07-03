@@ -16,12 +16,10 @@ const Register = () => {
       const response = await axios.post(//Checking if the email is valid before redirecting the user.
         "http://localhost:3000/users/email", {email: userInfo.email}, { headers: { "Content-Type": "application/json" } }
       );
-      
-      if(response.data.message === "The email is valid" && response.status === 200) {
-        setFinishedRegister(true);
-        navigate('/profile');
-      }
 
+      setFinishedRegister(true);
+      navigate('/register-profile');
+      
     } catch(error) {
       alert("This email already exists");
       console.log(error);
@@ -29,7 +27,7 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <div className="container-fluid">
       <form className="form-signin" onSubmit={handleSubmit}>
         <h1 className="h3 mb-3 font-weight-normal">Please Register</h1>
         <div className="row mb-2">
