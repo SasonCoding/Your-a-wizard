@@ -7,7 +7,27 @@
     width: 100%
   }
 
-  .character-card:hover {
+  .character-card-gryffindor:hover {
+    box-shadow: 0px 0px 999px 999px #dc354661;
+    z-index: 500;
+  }
+
+  .character-card-slytherin:hover {
+    box-shadow: 0px 0px 999px 999px #19875446;
+    z-index: 500;
+  }
+
+  .character-card-hufflepuff:hover {
+    box-shadow: 0px 0px 999px 999px #ffc10753;
+    z-index: 500;
+  }
+
+  .character-card-ravenclaw:hover {
+    box-shadow: 0px 0px 999px 999px #0dcaf04b;
+    z-index: 500;
+  }
+
+  .character-card-none:hover {
     box-shadow: 0px 0px 999px 999px rgba(83, 71, 71, 0.5);
     z-index: 500;
   }
@@ -16,4 +36,8 @@
     padding: 0;
     border: none;
     background: none;
+  }
+
+  .character-link { 
+    color:whitesmoke !important;
   }

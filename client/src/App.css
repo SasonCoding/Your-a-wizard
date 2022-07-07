@@ -35,8 +35,7 @@ a {
 
 .nav a:hover {
   color: #ffc107;
-  -webkit-text-decoration-color: #ffc107;
-          text-decoration-color: #ffc107;
+  text-decoration-color: #ffc107;
 }
 
 

@@ -16,6 +16,7 @@ module.exports = {
             } else {
                 res.status(200).json({
                     returnedCharacters,
+                    message: "Successfully fetched the wizardly data"
                 })
             }
         })
