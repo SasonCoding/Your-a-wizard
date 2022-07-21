@@ -17,7 +17,7 @@ const SubNavbar = () => {
       </li>
       <li className="nav-item">
         <Link className="nav-link px-4" to="/books">  {/* This page will have all the general information that are related to the wizardly world for example: Books, Potions, Spells... */}
-          General
+          Books
         </Link>
       </li>
       <li className="nav-item">

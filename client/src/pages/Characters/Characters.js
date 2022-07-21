@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
 import axios from 'axios';
+import CharactersNavbar from "./CharactersNavbar";
 import BubbleEffect from "../../specialEffects/Bubbles/BubbleEffect";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import "./Characters.css";
@@ -8,7 +8,7 @@ import "./Characters.css";
 const Characters = () => {
   const effectRan = useRef(false); //Using this hook to prevent our useEffect from calling the api twice because of the strict mode.
   const [currentCharacters, setCurrentCharacters] = useState(null);
-  const [charactersCategory, setCharactersCategory] = useState("main");
+  const [charactersCategory, setCharactersCategory] = useState("all");
 
   useEffect(() => {
     if (effectRan.current === false) {
@@ -42,11 +42,11 @@ const Characters = () => {
   }
 
   const handleCharactersDisplay = () => {
-    if(charactersCategory === 'main') {
+    if (charactersCategory === 'all') {
       return (currentCharacters.map((character, index) => {
         return (
-          <div className="col-lg-2 col-md-3 col-sm-4 mx-3 py-4" key={index}>
-            <div className={handleBorderColor(character.house)} style={{ width: "11rem", height: "16rem"}}>
+          <div className="col-lg-2 col-md-3 col-sm-4 mx-3 py-4 card-container" key={index}>
+            <div className={handleBorderColor(character.house)} style={{ width: "11rem", height: "16rem" }}>
               {!character.image ? (
                 <div className="card text-center bg-black" style={{ height: "100%" }}>
                   <div className="card-body">
@@ -56,13 +56,19 @@ const Characters = () => {
                   </div>
                 </div>
               ) :
-                <img src={character.image} className="card-image" alt={character.name} loading="lazy" />}
+                <div>
+                  <img src={character.image} className="card-image" alt={character.name} loading="lazy" />
+                  <div className="overlay">
+                    <h2>{character.name}</h2>
+                  </div>
+                </div>
+              }
             </div>
           </div>
         )
       }))
-    } else if(charactersCategory === 'students') {
-      return (currentCharacters.filter((character => {return character.hogwartsStudent === true})).map((character, index) => {
+    } else if (charactersCategory === 'students') {
+      return (currentCharacters.filter((character => { return character.hogwartsStudent === true })).map((character, index) => {
         return (
           <div className="col-lg-2 col-md-3 col-sm-4 mx-3 py-4" key={index}>
             <div className={handleBorderColor(character.house)} style={{ width: "11rem", height: "16rem" }}>
@@ -75,13 +81,19 @@ const Characters = () => {
                   </div>
                 </div>
               ) :
-                <img src={character.image} className="card-image" alt={character.name} loading="lazy" />}
+                <div>
+                  <img src={character.image} className="card-image" alt={character.name} loading="lazy" />
+                  <div className="overlay">
+                    <h2>{character.name}</h2>
+                  </div>
+                </div>
+              }
             </div>
           </div>
         )
       }))
-    } else if(charactersCategory === 'staff') {
-      return (currentCharacters.filter((character => {return character.hogwartsStaff === true})).map((character, index) => {
+    } else if (charactersCategory === 'staff') {
+      return (currentCharacters.filter((character => { return character.hogwartsStaff === true })).map((character, index) => {
         return (
           <div className="col-lg-2 col-md-3 col-sm-4 mx-3 py-4" key={index}>
             <div className={handleBorderColor(character.house)} style={{ width: "11rem", height: "16rem" }}>
@@ -94,13 +106,19 @@ const Characters = () => {
                   </div>
                 </div>
               ) :
-                <img src={character.image} className="card-image" alt={character.name} loading="lazy" />}
+                <div>
+                  <img src={character.image} className="card-image" alt={character.name} loading="lazy" />
+                  <div className="overlay">
+                    <h2>{character.name}</h2>
+                  </div>
+                </div>
+              }
             </div>
           </div>
         )
       }))
-    }else if(charactersCategory === 'house') {
-      return (currentCharacters.filter((character => {return character.house === 'Gryffindor'})).map((character, index) => {
+    } else if (charactersCategory === 'pure-blood' || charactersCategory === 'half-blood' || charactersCategory === 'muggleborn') {
+      return (currentCharacters.filter((character => { return character.ancestry === charactersCategory })).map((character, index) => {
         return (
           <div className="col-lg-2 col-md-3 col-sm-4 mx-3 py-4" key={index}>
             <div className={handleBorderColor(character.house)} style={{ width: "11rem", height: "16rem" }}>
@@ -113,13 +131,44 @@ const Characters = () => {
                   </div>
                 </div>
               ) :
-                <img src={character.image} className="card-image" alt={character.name} loading="lazy" />}
+                <div>
+                  <img src={character.image} className="card-image" alt={character.name} loading="lazy" />
+                  <div className="overlay">
+                    <h2>{character.name}</h2>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        )
+      }))
+    } else if (charactersCategory === 'Gryffindor' || charactersCategory === 'Slytherin' || charactersCategory === 'Hufflepuff' || charactersCategory === 'Ravenclaw') {
+      return (currentCharacters.filter((character => { return character.house === charactersCategory })).map((character, index) => {
+        return (
+          <div className="col-lg-2 col-md-3 col-sm-4 mx-3 py-4" key={index}>
+            <div className={handleBorderColor(character.house)} style={{ width: "11rem", height: "16rem" }}>
+              {!character.image ? (
+                <div className="card text-center bg-black" style={{ height: "100%" }}>
+                  <div className="card-body">
+                    <div className="card-text" style={{ marginTop: "50%" }}>
+                      <h4>{character.name}</h4>
+                    </div>
+                  </div>
+                </div>
+              ) :
+                <div>
+                  <img src={character.image} className="card-image" alt={character.name} loading="lazy" />
+                  <div className="overlay">
+                    <h2>{character.name}</h2>
+                  </div>
+                </div>
+              }
             </div>
           </div>
         )
       }))
     } else {
-      return (currentCharacters.filter((character => {return character.hogwartsStudent === true})).map((character, index) => {
+      return (currentCharacters.filter((character => { return character.hogwartsStudent === true })).map((character, index) => {
         return (
           <div className="col-lg-2 col-md-3 col-sm-4 mx-3 py-4" key={index}>
             <div className={handleBorderColor(character.house)} style={{ width: "11rem", height: "16rem" }}>
@@ -132,7 +181,13 @@ const Characters = () => {
                   </div>
                 </div>
               ) :
-                <img src={character.image} className="card-image" alt={character.name} loading="lazy" />}
+                <div>
+                  <img src={character.image} className="card-image" alt={character.name} loading="lazy" />
+                  <div className="overlay">
+                    <h2>{character.name}</h2>
+                  </div>
+                </div>
+              }
             </div>
           </div>
         )
@@ -142,37 +197,12 @@ const Characters = () => {
 
   return (
     <>
-      <div className="container">  {/* TODO: Add a drop down for the different houses */}
-        <div className="row pb-2">
-          <ul className="nav justify-content-center">
-            <li className="nav-item">
-              <Link className="nav-link characters-nav px-4 character-link" style={charactersCategory === "main" ? { textDecorationColor: "#ffc107" } : {}} to="/characters" onClick={() => { setCharactersCategory('main') }}>
-                Main
-              </Link>
-            </li>
-            <li className="nav-item characters-nav">
-              <Link className="nav-link px-4 character-link" style={charactersCategory === "students" ? { textDecorationColor: "#ffc107" } : {}} to="/characters" onClick={() => { setCharactersCategory('students') }}>
-                Students
-              </Link>
-            </li>
-            <li className="nav-item characters-nav">
-              <Link className="nav-link px-4 character-link" style={charactersCategory === "staff" ? { textDecorationColor: "#ffc107" } : {}} to="/characters" onClick={() => { setCharactersCategory('staff') }}>
-                Staff
-              </Link>
-            </li>
-            <li className="nav-item characters-nav">
-              <Link className="nav-link px-4 character-link" style={charactersCategory === "house" ? { textDecorationColor: "#ffc107" } : {}} to="/characters" onClick={() => { setCharactersCategory('house') }}>
-                House
-              </Link>
-            </li>
-            <li className="nav-item characters-nav">
-              <Link className="nav-link px-4 character-link" style={charactersCategory === "evil" ? { textDecorationColor: "#ffc107" } : {}} to="/characters" onClick={() => { setCharactersCategory('evil') }}>
-                Evil
-              </Link>
-            </li>
-          </ul>
-        </div>
-        {/* TODO: Add Modal, Add on hover effect that displays the characters name, Check if theres an option to add different onHover color for each character. */}
+      <div className="container">
+        <CharactersNavbar
+          charactersCategory={charactersCategory}
+          setCharactersCategory={setCharactersCategory}
+        />
+        {/* TODO: Add Modal*/}
         <div className="container">
           <div className="row justify-content-center pt-4">
             {currentCharacters ? handleCharactersDisplay() : <LoadingSpinner />}

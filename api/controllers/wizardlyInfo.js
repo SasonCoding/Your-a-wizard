@@ -19,7 +19,7 @@ module.exports = {
                     message: "Successfully fetched the wizardly data"
                 })
             }
-        })
+        }).limit(200);//limit allows us to limit the amount of characters that will be fetched from the DB.
     },
 
     getAllStudentWizards: (req, res) => {

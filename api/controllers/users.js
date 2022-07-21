@@ -126,7 +126,6 @@ module.exports = {
     getUser: (req, res) => { //This request returns the name of the user that matchs the id that is in the cookie of the currently logged user.
         const userId = res.locals.verify.id
         User.findById(userId).then((foundUser) => {
-            const { name: userName } = foundUser
             res.status(200).json({
                 foundUser
             })
