@@ -1,6 +1,6 @@
 Welcome to where all the magic begins....
-This project allows users to obtain all the data and knowledage that they always wanted about the magical world of Harry Potter, More over user`s have the ability
-to register as wizards them self`s and explore more of the magical world via chating with other wizard user`s, Looking at Q`A and more...!
+This project allows users to obtain all the data and knowledage that they always wanted about the magical world of Harry Potter, More over users have the ability
+to register as wizards them selfs and explore more of the magical world via chating with other wizard users, Looking at QA and more...!
 
 <h2>Characters showcase:</h2>
 
